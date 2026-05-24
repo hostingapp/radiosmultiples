@@ -177,7 +177,9 @@ controls
 autoplay
 playsinline>
 
-<source id="source">
+<source
+id="source"
+type="audio/mpeg">
 
 Tu navegador no soporta audio.
 
@@ -239,7 +241,10 @@ document.getElementById("audio");
 const source =
 document.getElementById("source");
 
-source.src = stream;
+source.setAttribute(
+"src",
+stream
+);
 
 audio.load();
 
