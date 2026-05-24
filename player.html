@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width,initial-scale=1">
+
+<title>Radio Player</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+
+font-family:Arial,sans-serif;
+
+background-image:
+linear-gradient(
+rgba(0,0,0,.65),
+rgba(0,0,0,.65)
+),
+url("https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=1200&auto=format&fit=crop");
+
+background-size:cover;
+
+background-position:center;
+
+background-attachment:fixed;
+
+min-height:100vh;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+padding:20px;
+
+color:#fff;
+
+}
+
+/* 🔥 CARD */
+
+.player-card{
+
+width:100%;
+
+max-width:420px;
+
+background:
+rgba(255,255,255,.10);
+
+backdrop-filter:blur(12px);
+
+-webkit-backdrop-filter:blur(12px);
+
+border-radius:28px;
+
+padding:30px;
+
+text-align:center;
+
+border:1px solid
+rgba(255,255,255,.18);
+
+}
+
+/* 🔥 LOGO */
+
+.logo{
+
+width:180px;
+
+height:180px;
+
+border-radius:24px;
+
+object-fit:cover;
+
+margin:auto;
+
+display:block;
+
+}
+
+/* 🔥 NAME */
+
+.name{
+
+margin-top:20px;
+
+font-size:28px;
+
+font-weight:bold;
+
+}
+
+/* 🔥 PAIS */
+
+.country{
+
+margin-top:10px;
+
+font-size:15px;
+
+color:#ddd;
+
+}
+
+/* 🔥 AUDIO */
+
+audio{
+
+width:100%;
+
+margin-top:25px;
+
+}
+
+/* 🔥 BOTON */
+
+.back-btn{
+
+display:inline-block;
+
+margin-top:25px;
+
+padding:14px 22px;
+
+border-radius:14px;
+
+background:
+rgba(255,255,255,.12);
+
+color:#fff;
+
+text-decoration:none;
+
+font-weight:bold;
+
+border:1px solid
+rgba(255,255,255,.15);
+
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="player-card">
+
+<img
+id="logo"
+class="logo">
+
+<div
+id="name"
+class="name"></div>
+
+<div
+id="country"
+class="country"></div>
+
+<audio
+id="audio"
+controls
+autoplay
+playsinline>
+</audio>
+<br>
+
+<a
+href="index.html"
+class="back-btn">
+
+← Volver
+
+</a>
+
+</div>
+
+<script>
+
+const params =
+new URLSearchParams(
+window.location.search
+);
+
+const nombre =
+decodeURIComponent(
+params.get("nombre") || ""
+);
+
+const logo =
+decodeURIComponent(
+params.get("logo") || ""
+);
+
+const stream =
+decodeURIComponent(
+params.get("stream") || ""
+);
+
+const pais =
+decodeURIComponent(
+params.get("pais") || ""
+);
+
+document
+.getElementById("name")
+.innerText = nombre;
+
+document
+.getElementById("logo")
+.src = logo;
+
+document
+.getElementById("country")
+.innerText = pais;
+
+document
+.getElementById("audio")
+.src = stream;
+
+const audio =
+document.getElementById("audio");
+
+// 🔥 INTENTAR REPRODUCIR
+audio.play().catch(()=>{});
+
+// 🔥 MANTENER AUDIO
+document.addEventListener(
+"visibilitychange",
+function(){
+
+    if(
+        !document.hidden &&
+        audio.paused
+    ){
+
+        audio.play().catch(()=>{});
+
+    }
+
+});
+</script>
+
+</body>
+</html>

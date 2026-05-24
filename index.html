@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+
+<title>Radios Multiples</title>
+
+<style>
+
+/* 🔥 RESET */
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* 🔥 FONDO */
+html,
+body{
+
+    width:100%;
+
+    max-width:100%;
+
+    min-height:100%;
+
+    overflow-x:hidden;
+
+    font-family:Arial,sans-serif;
+
+    background-image:
+    linear-gradient(
+        rgba(0,0,0,.60),
+        rgba(0,0,0,.60)
+    ),
+    url("https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=1200&auto=format&fit=crop");
+
+    background-size:cover;
+
+    background-position:center;
+
+    background-repeat:no-repeat;
+
+    background-attachment:fixed;
+
+}
+
+/* 🔥 APP */
+.radio-app{
+
+    width:100%;
+
+    min-height:100vh;
+
+    padding:12px;
+
+}
+
+/* 🔥 TITULO */
+.app-title{
+
+    text-align:center;
+
+    font-size:24px;
+
+    font-weight:bold;
+
+    color:#fff;
+
+    margin-bottom:20px;
+
+}
+
+/* 🔥 FILTRO */
+.filter-box{
+
+    width:100%;
+
+    margin-bottom:20px;
+
+}
+
+/* 🔥 SELECT */
+#countryFilter{
+
+    width:100%;
+
+    padding:14px;
+
+    border-radius:14px;
+
+    outline:none;
+
+    font-size:15px;
+
+    font-weight:bold;
+
+    color:#fff;
+
+    border:1px solid
+    rgba(255,255,255,.20);
+
+    background:
+    rgba(255,255,255,.10);
+
+    backdrop-filter:
+    blur(10px);
+
+    -webkit-backdrop-filter:
+    blur(10px);
+
+}
+
+#countryFilter option{
+
+    color:#111;
+
+}
+
+/* 🔥 GRID RESPONSIVE */
+.country-grid,
+.radio-grid{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(100px,1fr));
+
+    gap:10px;
+
+    width:100%;
+
+}
+
+/* 🔥 CARDS */
+.country-card,
+.radio-card{
+
+    background:
+    rgba(255,255,255,.10);
+
+    backdrop-filter:
+    blur(10px);
+
+    -webkit-backdrop-filter:
+    blur(10px);
+
+    border:1px solid
+    rgba(255,255,255,.18);
+
+    border-radius:18px;
+
+    padding:12px 8px;
+
+    text-align:center;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.country-card:hover,
+.radio-card:hover{
+
+    transform:translateY(-4px);
+
+    box-shadow:
+    0 8px 18px rgba(0,0,0,.20);
+
+}
+
+/* 🔥 BANDERAS */
+.country-flag img{
+
+    width:48px;
+
+    height:34px;
+
+    object-fit:cover;
+
+    border-radius:6px;
+
+    margin-bottom:8px;
+
+}
+
+/* 🔥 LOGO RESPONSIVE */
+.radio-logo{
+
+    width:100%;
+
+    max-width:65px;
+
+    aspect-ratio:1/1;
+
+    object-fit:cover;
+
+    border-radius:16px;
+
+    margin-bottom:10px;
+
+}
+
+/* 🔥 TEXTO */
+.country-name,
+.radio-name{
+
+    font-size:12px;
+
+    font-weight:bold;
+
+    color:#fff;
+
+    line-height:1.4;
+
+    word-break:break-word;
+
+}
+
+.country-total{
+
+    margin-top:6px;
+
+    font-size:10px;
+
+    color:#ddd;
+
+}
+
+/* 🔥 BOTON */
+.back-btn{
+
+    display:inline-block;
+
+    background:
+    rgba(255,255,255,.15);
+
+    color:#fff;
+
+    padding:12px 18px;
+
+    border-radius:12px;
+
+    margin-bottom:20px;
+
+    font-size:14px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    backdrop-filter:blur(10px);
+
+    border:1px solid
+    rgba(255,255,255,.15);
+
+}
+
+/* 🔥 PAGINACION */
+.pagination{
+
+    margin-top:25px;
+
+    display:flex;
+
+    justify-content:center;
+
+    flex-wrap:wrap;
+
+    gap:8px;
+
+}
+
+/* 🔥 BOTONES */
+.page-btn{
+
+    width:38px;
+
+    height:38px;
+
+    border:none;
+
+    border-radius:10px;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    color:#fff;
+
+    background:
+    rgba(255,255,255,.10);
+
+    border:1px solid
+    rgba(255,255,255,.15);
+
+    backdrop-filter:
+    blur(10px);
+
+}
+
+.page-btn.active{
+
+    background:#fff;
+
+    color:#111;
+
+}
+
+/* 🔥 OCULTAR */
+.hidden{
+
+    display:none;
+
+}
+
+</style>
+
+</head>
+<body>
+
+<div class="radio-app">
+
+    <!-- 🔥 PAISES -->
+    <div id="countriesSection">
+
+        <div class="app-title">
+
+            🌎 Países
+
+        </div>
+
+        <!-- 🔥 FILTRO -->
+        <div class="filter-box">
+
+            <select id="countryFilter">
+
+                <option value="">
+
+                    Todos los países
+
+                </option>
+
+            </select>
+
+        </div>
+
+        <!-- 🔥 GRID -->
+        <div class="country-grid"
+             id="countryGrid"></div>
+
+        <!-- 🔥 PAGINACION -->
+        <div class="pagination"
+             id="pagination"></div>
+
+    </div>
+
+    <!-- 🔥 EMISORAS -->
+    <div id="radiosSection"
+         class="hidden">
+
+        <div class="back-btn"
+             onclick="volverPaises()">
+
+            ← Volver
+
+        </div>
+
+        <div class="app-title"
+             id="countryTitle"></div>
+
+        <!-- 🔥 GRID -->
+        <div class="radio-grid"
+             id="radioGrid"></div>
+
+    </div>
+
+</div>
+
+<!-- 🔥 PAPAPARSE -->
+<script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
+
+<script>
+
+// 🔥 GOOGLE SHEETS
+const sheetURL =
+"https://docs.google.com/spreadsheets/d/e/2PACX-1vT0xk01tNw0zCo0mgsq1PYv6Gk4ptl_kv11QfEF4s0aSZDD8wAxym3jnNdEMHCOH_XriaQkw6sh6HTD/pub?output=csv";
+
+// 🔥 ELEMENTOS
+const countryGrid =
+document.getElementById("countryGrid");
+
+const radioGrid =
+document.getElementById("radioGrid");
+
+const countriesSection =
+document.getElementById("countriesSection");
+
+const radiosSection =
+document.getElementById("radiosSection");
+
+const countryTitle =
+document.getElementById("countryTitle");
+
+const countryFilter =
+document.getElementById("countryFilter");
+
+const pagination =
+document.getElementById("pagination");
+
+// 🔥 CONFIG
+const itemsPerPage = 12;
+
+let currentPage = 1;
+
+let radios = [];
+
+// 🔥 BANDERAS
+function banderaPais(pais){
+
+    pais = (pais || "")
+    .toLowerCase()
+    .trim();
+
+    const flags = {
+
+        "argentina":"https://flagcdn.com/w80/ar.png",
+        "bolivia":"https://flagcdn.com/w80/bo.png",
+        "brasil":"https://flagcdn.com/w80/br.png",
+        "canada":"https://flagcdn.com/w80/ca.png",
+        "canadá":"https://flagcdn.com/w80/ca.png",
+        "chile":"https://flagcdn.com/w80/cl.png",
+        "colombia":"https://flagcdn.com/w80/co.png",
+        "costa rica":"https://flagcdn.com/w80/cr.png",
+        "cuba":"https://flagcdn.com/w80/cu.png",
+        "ecuador":"https://flagcdn.com/w80/ec.png",
+        "el salvador":"https://flagcdn.com/w80/sv.png",
+        "españa":"https://flagcdn.com/w80/es.png",
+        "espana":"https://flagcdn.com/w80/es.png",
+        "estados unidos":"https://flagcdn.com/w80/us.png",
+        "guatemala":"https://flagcdn.com/w80/gt.png",
+        "honduras":"https://flagcdn.com/w80/hn.png",
+        "mexico":"https://flagcdn.com/w80/mx.png",
+        "méxico":"https://flagcdn.com/w80/mx.png",
+        "nicaragua":"https://flagcdn.com/w80/ni.png",
+        "panama":"https://flagcdn.com/w80/pa.png",
+        "panamá":"https://flagcdn.com/w80/pa.png",
+        "paraguay":"https://flagcdn.com/w80/py.png",
+        "peru":"https://flagcdn.com/w80/pe.png",
+        "perú":"https://flagcdn.com/w80/pe.png",
+        "puerto rico":"https://flagcdn.com/w80/pr.png",
+        "republica dominicana":"https://flagcdn.com/w80/do.png",
+        "república dominicana":"https://flagcdn.com/w80/do.png",
+        "uruguay":"https://flagcdn.com/w80/uy.png",
+        "venezuela":"https://flagcdn.com/w80/ve.png"
+
+    };
+
+    return flags[pais] ||
+    "https://flagcdn.com/w80/un.png";
+
+}
+
+// 🔥 LEER CSV
+Papa.parse(sheetURL,{
+
+    download:true,
+
+    skipEmptyLines:true,
+
+    complete:function(results){
+
+        radios = results.data;
+
+        radios.shift();
+
+        radios.reverse();
+
+        crearFiltro();
+
+        mostrarPaises();
+
+    }
+
+});
+
+// 🔥 CREAR FILTRO
+function crearFiltro(){
+
+    const paises = [];
+
+    radios.forEach(cols=>{
+
+        const pais = cols[5];
+
+        if(
+            pais &&
+            !paises.includes(pais)
+        ){
+
+            paises.push(pais);
+
+        }
+
+    });
+
+    paises.sort();
+
+    paises.forEach(pais=>{
+
+        const option =
+        document.createElement("option");
+
+        option.value = pais;
+
+        option.textContent = pais;
+
+        countryFilter.appendChild(option);
+
+    });
+
+}
+
+// 🔥 MOSTRAR PAISES
+function mostrarPaises(){
+
+    countryGrid.innerHTML = "";
+
+    const filtro =
+    countryFilter.value;
+
+    const paises = {};
+
+    radios.forEach(cols=>{
+
+        const pais =
+        cols[5] || "Otros";
+
+        if(
+            filtro &&
+            pais !== filtro
+        ){
+            return;
+        }
+
+        if(!paises[pais]){
+
+            paises[pais] = 0;
+
+        }
+
+        paises[pais]++;
+
+    });
+
+    const paisesArray =
+    Object.entries(paises);
+
+    const totalPages =
+    Math.ceil(
+        paisesArray.length /
+        itemsPerPage
+    );
+
+    const start =
+    (currentPage - 1) *
+    itemsPerPage;
+
+    const end =
+    start + itemsPerPage;
+
+    const currentItems =
+    paisesArray.slice(start,end);
+
+    currentItems.forEach(item=>{
+
+        const pais = item[0];
+
+        const total = item[1];
+
+        const card =
+        document.createElement("div");
+
+        card.className =
+        "country-card";
+
+        card.onclick = ()=>{
+
+            mostrarRadiosPais(pais);
+
+        };
+
+        card.innerHTML = `
+
+            <div class="country-flag">
+
+                <img src="${banderaPais(pais)}">
+
+            </div>
+
+            <div class="country-name">
+
+                ${pais}
+
+            </div>
+
+            <div class="country-total">
+
+                ${total} emisoras
+
+            </div>
+
+        `;
+
+        countryGrid.appendChild(card);
+
+    });
+
+    crearPaginacion(totalPages);
+
+}
+
+// 🔥 PAGINACION
+function crearPaginacion(totalPages){
+
+    pagination.innerHTML = "";
+
+    for(let i = 1; i <= totalPages; i++){
+
+        const btn =
+        document.createElement("button");
+
+        btn.className =
+        "page-btn";
+
+        if(i === currentPage){
+
+            btn.classList.add(
+                "active"
+            );
+
+        }
+
+        btn.innerText = i;
+
+        btn.onclick = ()=>{
+
+            currentPage = i;
+
+            mostrarPaises();
+
+            window.scrollTo({
+
+                top:0,
+
+                behavior:"smooth"
+
+            });
+
+        };
+
+        pagination.appendChild(btn);
+
+    }
+
+}
+
+// 🔥 MOSTRAR EMISORAS
+function mostrarRadiosPais(pais){
+
+    countriesSection.classList.add(
+        "hidden"
+    );
+
+    radiosSection.classList.remove(
+        "hidden"
+    );
+
+    countryTitle.innerHTML = `
+
+        <img src="${banderaPais(pais)}"
+             style="
+             width:40px;
+             height:28px;
+             object-fit:cover;
+             border-radius:6px;
+             vertical-align:middle;
+             margin-right:8px;
+             ">
+
+        ${pais}
+
+    `;
+
+    radioGrid.innerHTML = "";
+
+    const filtradas =
+    radios.filter(cols=>
+        (cols[5] || "") === pais
+    );
+
+    filtradas.forEach(cols=>{
+
+        const nombre =
+        cols[1] || "";
+
+        const logo =
+        cols[2] || "";
+
+        const stream =
+        cols[3] || "";
+
+        const card =
+        document.createElement("div");
+
+        card.className =
+        "radio-card";
+
+        card.onclick = ()=>{
+
+            window.location.href =
+            "player.html?nombre=" + encodeURIComponent(nombre) +
+            "&logo=" + encodeURIComponent(logo) +
+            "&stream=" + encodeURIComponent(stream) +
+            "&pais=" + encodeURIComponent(pais);
+
+        };
+
+        card.innerHTML = `
+
+            <img class="radio-logo"
+                 src="${logo}"
+                 onerror="
+                 this.src='https://via.placeholder.com/100';
+                 ">
+
+            <div class="radio-name">
+
+                ${nombre}
+
+            </div>
+
+        `;
+
+        radioGrid.appendChild(card);
+
+    });
+
+}
+
+// 🔥 VOLVER
+function volverPaises(){
+
+    radiosSection.classList.add(
+        "hidden"
+    );
+
+    countriesSection.classList.remove(
+        "hidden"
+    );
+
+}
+
+// 🔥 EVENTO FILTRO
+countryFilter.addEventListener(
+    "change",
+    ()=>{
+
+        currentPage = 1;
+
+        mostrarPaises();
+
+    }
+);
+
+</script>
+
+</body>
+</html>
