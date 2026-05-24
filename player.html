@@ -4,12 +4,32 @@
 
 <meta charset="UTF-8">
 
-<meta name="viewport"
-content="width=device-width,initial-scale=1">
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-<title>Radio Player</title>
+<meta
+name="theme-color"
+content="#0f172a">
+
+<title>PLAYER | RADIOS MULTIPLES</title>
+
+<link
+rel="preconnect"
+href="https://fonts.googleapis.com">
+
+<link
+rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
+
+<link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+rel="stylesheet">
 
 <style>
+
+/* 🔥 RESET */
 
 *{
 margin:0;
@@ -17,34 +37,42 @@ padding:0;
 box-sizing:border-box;
 }
 
+/* 🔥 BODY */
+
+html,
 body{
 
-font-family:Arial,sans-serif;
+width:100%;
+min-height:100%;
+overflow-x:hidden;
 
-background-image:
+font-family:
+'Poppins',
+sans-serif;
+
+background:
 linear-gradient(
-rgba(0,0,0,.65),
-rgba(0,0,0,.65)
-),
-url("https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=1200&auto=format&fit=crop");
+180deg,
+#020617,
+#0f172a
+);
 
-background-size:cover;
+color:#fff;
 
-background-position:center;
+}
 
-background-attachment:fixed;
+/* 🔥 PLAYER */
 
+.player-page{
+
+width:100%;
 min-height:100vh;
 
 display:flex;
-
+align-items:center;
 justify-content:center;
 
-align-items:center;
-
 padding:20px;
-
-color:#fff;
 
 }
 
@@ -52,67 +80,230 @@ color:#fff;
 
 .player-card{
 
-width:100%;
+position:relative;
 
-max-width:420px;
+width:100%;
+max-width:430px;
 
 background:
-rgba(255,255,255,.10);
+linear-gradient(
+180deg,
+#1e293b,
+#111827
+);
 
-backdrop-filter:blur(12px);
+border-radius:34px;
 
--webkit-backdrop-filter:blur(12px);
-
-border-radius:28px;
-
-padding:30px;
+padding:30px 24px;
 
 text-align:center;
 
-border:1px solid
-rgba(255,255,255,.18);
+overflow:hidden;
+
+border:
+1px solid rgba(255,255,255,.06);
+
+box-shadow:
+0 10px 40px rgba(0,0,0,.45);
+
+}
+
+/* 🔥 EFECTO */
+
+.player-card::before{
+
+content:"";
+
+position:absolute;
+
+width:250px;
+height:250px;
+
+background:
+rgba(255,255,255,.03);
+
+border-radius:50%;
+
+top:-120px;
+right:-80px;
+
+}
+
+/* 🔥 BACK */
+
+.top-bar{
+
+display:flex;
+align-items:center;
+justify-content:space-between;
+
+margin-bottom:20px;
+
+position:relative;
+z-index:2;
+
+}
+
+.back-btn{
+
+width:46px;
+height:46px;
+
+border-radius:16px;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
+background:
+rgba(255,255,255,.06);
+
+font-size:20px;
+
+cursor:pointer;
+
+text-decoration:none;
+
+color:#fff;
 
 }
 
 /* 🔥 LOGO */
 
+.logo-wrap{
+
+position:relative;
+z-index:2;
+
+}
+
 .logo{
 
-width:180px;
-
-height:180px;
-
-border-radius:24px;
+width:210px;
+height:210px;
 
 object-fit:cover;
+
+border-radius:32px;
 
 margin:auto;
 
 display:block;
 
+border:
+4px solid rgba(255,255,255,.08);
+
+box-shadow:
+0 12px 30px rgba(0,0,0,.45);
+
+background:#fff;
+
 }
 
-/* 🔥 NAME */
+/* 🔥 LIVE */
 
-.name{
+.live-badge{
 
-margin-top:20px;
+display:inline-flex;
+align-items:center;
+gap:8px;
+
+margin-top:18px;
+
+padding:8px 16px;
+
+border-radius:999px;
+
+background:
+rgba(239,68,68,.15);
+
+color:#ff4d4d;
+
+font-size:13px;
+font-weight:700;
+
+letter-spacing:1px;
+
+}
+
+.live-dot{
+
+width:10px;
+height:10px;
+
+border-radius:50%;
+
+background:#ff4d4d;
+
+animation:pulse 1s infinite;
+
+}
+
+@keyframes pulse{
+
+0%{
+transform:scale(1);
+opacity:1;
+}
+
+50%{
+transform:scale(1.5);
+opacity:.5;
+}
+
+100%{
+transform:scale(1);
+opacity:1;
+}
+
+}
+
+/* 🔥 INFO */
+
+.radio-name{
+
+margin-top:24px;
 
 font-size:28px;
+font-weight:800;
 
-font-weight:bold;
+line-height:1.2;
+
+position:relative;
+z-index:2;
 
 }
 
-/* 🔥 PAIS */
-
-.country{
+.radio-country{
 
 margin-top:10px;
 
 font-size:15px;
 
-color:#ddd;
+color:#94a3b8;
+
+font-weight:500;
+
+}
+
+/* 🔥 PLAYER BOX */
+
+.player-box{
+
+margin-top:30px;
+
+padding:22px;
+
+border-radius:28px;
+
+background:
+rgba(255,255,255,.04);
+
+border:
+1px solid rgba(255,255,255,.05);
+
+position:relative;
+z-index:2;
 
 }
 
@@ -121,75 +312,228 @@ color:#ddd;
 audio{
 
 width:100%;
-
-margin-top:25px;
-
-}
-
-/* 🔥 BOTON */
-
-.back-btn{
-
-display:inline-block;
-
-margin-top:25px;
-
-padding:14px 22px;
+height:54px;
 
 border-radius:14px;
 
+}
+
+/* 🔥 STATUS */
+
+.status{
+
+margin-top:16px;
+
+font-size:13px;
+
+color:#cbd5e1;
+
+}
+
+/* 🔥 BUTTONS */
+
+.action-buttons{
+
+display:flex;
+justify-content:center;
+gap:14px;
+
+margin-top:22px;
+
+flex-wrap:wrap;
+
+}
+
+.action-btn{
+
+padding:14px 20px;
+
+border-radius:18px;
+
 background:
-rgba(255,255,255,.12);
+#334155;
+
+border:none;
 
 color:#fff;
 
-text-decoration:none;
+font-weight:700;
 
-font-weight:bold;
+font-size:14px;
 
-border:1px solid
-rgba(255,255,255,.15);
+cursor:pointer;
+
+transition:.2s;
+
+}
+
+.action-btn:hover{
+
+transform:translateY(-2px);
+
+}
+
+/* 🔥 LOADER */
+
+.loader{
+
+margin-top:15px;
+
+font-size:13px;
+
+color:#38bdf8;
+
+display:none;
+
+}
+
+/* 🔥 MOBILE */
+
+@media(max-width:480px){
+
+.player-card{
+
+padding:24px 18px;
+
+border-radius:28px;
+
+}
+
+.logo{
+
+width:180px;
+height:180px;
+
+}
+
+.radio-name{
+
+font-size:24px;
+
+}
 
 }
 
 </style>
 
 </head>
+
 <body>
+
+<div class="player-page">
 
 <div class="player-card">
 
+<!-- 🔥 TOP -->
+
+<div class="top-bar">
+
+<a
+href="index.html"
+class="back-btn">
+
+←
+
+</a>
+
+</div>
+
+<!-- 🔥 LOGO -->
+
+<div class="logo-wrap">
+
 <img
 id="logo"
-class="logo">
+class="logo"
+src="">
+
+</div>
+
+<!-- 🔥 LIVE -->
+
+<div class="live-badge">
+
+<div class="live-dot"></div>
+
+EN VIVO
+
+</div>
+
+<!-- 🔥 NAME -->
 
 <div
 id="name"
-class="name"></div>
+class="radio-name">
+
+Cargando...
+
+</div>
+
+<!-- 🔥 COUNTRY -->
 
 <div
 id="country"
-class="country"></div>
+class="radio-country">
+
+</div>
+
+<!-- 🔥 PLAYER -->
+
+<div class="player-box">
 
 <audio
 id="audio"
 controls
 autoplay
 playsinline>
+
 </audio>
-<br>
 
-<a
-href="index.html"
-class="back-btn">
+<div
+id="status"
+class="status">
 
-← Volver
+Conectando stream...
 
-</a>
+</div>
+
+<div
+id="loader"
+class="loader">
+
+Cargando audio...
+
+</div>
+
+<div class="action-buttons">
+
+<button
+class="action-btn"
+onclick="togglePlay()">
+
+▶ PLAY / PAUSE
+
+</button>
+
+<button
+class="action-btn"
+onclick="reloadStream()">
+
+⟳ RECARGAR
+
+</button>
+
+</div>
+
+</div>
+
+</div>
 
 </div>
 
 <script>
+
+/* 🔥 PARAMETROS */
 
 const params =
 new URLSearchParams(
@@ -206,7 +550,7 @@ decodeURIComponent(
 params.get("logo") || ""
 );
 
-const stream =
+let stream =
 decodeURIComponent(
 params.get("stream") || ""
 );
@@ -216,43 +560,171 @@ decodeURIComponent(
 params.get("pais") || ""
 );
 
+/* 🔥 ELEMENTOS */
+
+const audio =
+document.getElementById("audio");
+
+const logoImg =
+document.getElementById("logo");
+
+const statusText =
+document.getElementById("status");
+
+const loader =
+document.getElementById("loader");
+
+/* 🔥 DATOS */
+
 document
 .getElementById("name")
 .innerText = nombre;
 
 document
-.getElementById("logo")
-.src = logo;
-
-document
 .getElementById("country")
 .innerText = pais;
 
-document
-.getElementById("audio")
-.src = stream;
+logoImg.src =
+logo || "https://via.placeholder.com/300";
 
-const audio =
-document.getElementById("audio");
+/* 🔥 STREAM FIX */
 
-// 🔥 INTENTAR REPRODUCIR
-audio.play().catch(()=>{});
+stream = stream.trim();
 
-// 🔥 MANTENER AUDIO
-document.addEventListener(
-"visibilitychange",
-function(){
+/* 🔥 HTTPS FIX */
 
-    if(
-        !document.hidden &&
-        audio.paused
-    ){
+if(
+location.protocol === "https:" &&
+stream.startsWith("http://")
+){
 
-        audio.play().catch(()=>{});
+statusText.innerHTML =
+"⚠ El stream usa HTTP y puede bloquearse en algunas apps.";
 
-    }
+}
+
+/* 🔥 LOAD STREAM */
+
+function loadStream(){
+
+loader.style.display =
+"block";
+
+audio.src = stream;
+
+audio.load();
+
+const playPromise =
+audio.play();
+
+if(playPromise !== undefined){
+
+playPromise
+.then(()=>{
+
+statusText.innerHTML =
+"🟢 Reproduciendo en vivo";
+
+loader.style.display =
+"none";
+
+})
+.catch(()=>{
+
+statusText.innerHTML =
+"❌ No se pudo reproducir el stream";
+
+loader.style.display =
+"none";
 
 });
+
+}
+
+}
+
+/* 🔥 PLAY / PAUSE */
+
+function togglePlay(){
+
+if(audio.paused){
+
+audio.play();
+
+}else{
+
+audio.pause();
+
+}
+
+}
+
+/* 🔥 RECARGAR */
+
+function reloadStream(){
+
+statusText.innerHTML =
+"🔄 Reconectando stream...";
+
+loadStream();
+
+}
+
+/* 🔥 EVENTOS */
+
+audio.addEventListener(
+"playing",
+()=>{
+
+statusText.innerHTML =
+"🟢 Reproduciendo en vivo";
+
+}
+);
+
+audio.addEventListener(
+"waiting",
+()=>{
+
+statusText.innerHTML =
+"⏳ Cargando stream...";
+
+}
+);
+
+audio.addEventListener(
+"error",
+()=>{
+
+statusText.innerHTML =
+"❌ Stream incompatible o fuera de línea";
+
+}
+);
+
+/* 🔥 SEGUNDO PLANO */
+
+document.addEventListener(
+"visibilitychange",
+()=>{
+
+if(
+!document.hidden &&
+audio.paused
+){
+
+audio.play()
+.catch(()=>{});
+
+}
+
+}
+);
+
+/* 🔥 START */
+
+loadStream();
+
 </script>
 
 </body>
