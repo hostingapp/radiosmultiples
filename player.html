@@ -176,6 +176,11 @@ id="audio"
 controls
 autoplay
 playsinline>
+
+<source id="source">
+
+Tu navegador no soporta audio.
+
 </audio>
 <br>
 
@@ -228,31 +233,39 @@ document
 .getElementById("country")
 .innerText = pais;
 
-document
-.getElementById("audio")
-.src = stream;
-
 const audio =
 document.getElementById("audio");
 
-// 🔥 INTENTAR REPRODUCIR
-audio.play().catch(()=>{});
+const source =
+document.getElementById("source");
 
-// 🔥 MANTENER AUDIO
-document.addEventListener(
-"visibilitychange",
-function(){
+source.src = stream;
 
-    if(
-        !document.hidden &&
-        audio.paused
-    ){
+audio.load();
 
-        audio.play().catch(()=>{});
+audio.play().catch(error=>{
 
-    }
+    console.log(
+    "Error audio:",
+    error
+    );
+
+    alert(
+    "La emisora no pudo reproducirse."
+    );
 
 });
+    
+audio.addEventListener(
+"error",
+()=>{
+
+    alert(
+    "Stream incompatible o caído."
+    );
+
+});
+    
 </script>
 
 </body>
