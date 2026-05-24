@@ -8,7 +8,7 @@
 name="viewport"
 content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
 
-<title>Radios Multiples</title>
+<title>RADIOS MULTIPLES</title>
 
 <style>
 
@@ -24,11 +24,8 @@ html,
 body{
 
     width:100%;
-
     max-width:100%;
-
     min-height:100%;
-
     overflow-x:hidden;
 
     font-family:Arial,sans-serif;
@@ -41,11 +38,8 @@ body{
     url("https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=1200&auto=format&fit=crop");
 
     background-size:cover;
-
     background-position:center;
-
     background-repeat:no-repeat;
-
     background-attachment:fixed;
 
 }
@@ -64,11 +58,11 @@ body{
 
     display:flex;
 
+    justify-content:center;
+
     align-items:center;
 
-    justify-content:space-between;
-
-    padding:12px 16px;
+    padding:14px 16px;
 
     margin-bottom:20px;
 
@@ -87,15 +81,21 @@ body{
 
 }
 
-/* 🔥 LEFT */
+/* 🔥 CONTENIDO */
 
 .topbar-left{
 
     display:flex;
 
+    flex-direction:column;
+
     align-items:center;
 
-    gap:12px;
+    justify-content:center;
+
+    gap:8px;
+
+    width:100%;
 
 }
 
@@ -103,49 +103,23 @@ body{
 
 .app-logo{
 
-    width:42px;
+    width:70px;
 
-    height:42px;
+    height:70px;
 
-    border-radius:12px;
+    border-radius:20px;
 
     object-fit:cover;
 
     box-shadow:
-    0 4px 10px
-    rgba(0,0,0,.25);
+    0 6px 18px
+    rgba(0,0,0,.35);
 
 }
 
-/* 🔥 NAME */
+/* 🔥 NOMBRE */
 
 .app-name{
-
-    font-size:20px;
-
-    font-weight:bold;
-
-    color:#fff;
-
-    letter-spacing:.3px;
-
-}
-
-/* 🔥 APP */
-.radio-app{
-
-    width:100%;
-
-    min-height:100vh;
-
-    padding:12px;
-
-}
-
-/* 🔥 TITULO */
-.app-title{
-
-    text-align:center;
 
     font-size:24px;
 
@@ -153,20 +127,35 @@ body{
 
     color:#fff;
 
-    margin-bottom:20px;
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    text-align:center;
+
+}
+
+/* 🔥 APP */
+
+.radio-app{
+
+    width:100%;
+    min-height:100vh;
+    padding:12px;
 
 }
 
 /* 🔥 FILTRO */
+
 .filter-box{
 
     width:100%;
-
     margin-bottom:20px;
 
 }
 
 /* 🔥 SELECT */
+
 #countryFilter{
 
     width:100%;
@@ -203,7 +192,8 @@ body{
 
 }
 
-/* 🔥 GRID RESPONSIVE */
+/* 🔥 GRID */
+
 .country-grid,
 .radio-grid{
 
@@ -219,6 +209,7 @@ body{
 }
 
 /* 🔥 CARDS */
+
 .country-card,
 .radio-card{
 
@@ -257,6 +248,7 @@ body{
 }
 
 /* 🔥 BANDERAS */
+
 .country-flag img{
 
     width:48px;
@@ -271,7 +263,8 @@ body{
 
 }
 
-/* 🔥 LOGO RESPONSIVE */
+/* 🔥 LOGO EMISORA */
+
 .radio-logo{
 
     width:100%;
@@ -289,6 +282,7 @@ body{
 }
 
 /* 🔥 TEXTO */
+
 .country-name,
 .radio-name{
 
@@ -315,6 +309,7 @@ body{
 }
 
 /* 🔥 BOTON */
+
 .back-btn{
 
     display:inline-block;
@@ -343,7 +338,24 @@ body{
 
 }
 
+/* 🔥 TITULO PAIS */
+
+.app-title{
+
+    text-align:center;
+
+    font-size:22px;
+
+    font-weight:bold;
+
+    color:#fff;
+
+    margin-bottom:20px;
+
+}
+
 /* 🔥 PAGINACION */
+
 .pagination{
 
     margin-top:25px;
@@ -359,6 +371,7 @@ body{
 }
 
 /* 🔥 BOTONES */
+
 .page-btn{
 
     width:38px;
@@ -395,6 +408,7 @@ body{
 }
 
 /* 🔥 OCULTAR */
+
 .hidden{
 
     display:none;
@@ -406,7 +420,8 @@ body{
 </head>
 <body>
 
-<!-- 🔥 HEADER APP -->
+<!-- 🔥 HEADER -->
+
 <div class="topbar">
 
     <div class="topbar-left">
@@ -417,7 +432,7 @@ body{
 
         <div class="app-name">
 
-            Radios Multiples
+            RADIOS MULTIPLES
 
         </div>
 
@@ -425,12 +440,16 @@ body{
 
 </div>
 
+<!-- 🔥 APP -->
+
 <div class="radio-app">
 
     <!-- 🔥 PAISES -->
+
     <div id="countriesSection">
 
         <!-- 🔥 FILTRO -->
+
         <div class="filter-box">
 
             <select id="countryFilter">
@@ -446,16 +465,19 @@ body{
         </div>
 
         <!-- 🔥 GRID -->
+
         <div class="country-grid"
              id="countryGrid"></div>
 
         <!-- 🔥 PAGINACION -->
+
         <div class="pagination"
              id="pagination"></div>
 
     </div>
 
     <!-- 🔥 EMISORAS -->
+
     <div id="radiosSection"
          class="hidden">
 
@@ -469,7 +491,6 @@ body{
         <div class="app-title"
              id="countryTitle"></div>
 
-        <!-- 🔥 GRID -->
         <div class="radio-grid"
              id="radioGrid"></div>
 
@@ -478,15 +499,18 @@ body{
 </div>
 
 <!-- 🔥 PAPAPARSE -->
+
 <script src="https://cdn.jsdelivr.net/npm/papaparse@5.4.1/papaparse.min.js"></script>
 
 <script>
 
 // 🔥 GOOGLE SHEETS
+
 const sheetURL =
 "https://docs.google.com/spreadsheets/d/e/2PACX-1vT0xk01tNw0zCo0mgsq1PYv6Gk4ptl_kv11QfEF4s0aSZDD8wAxym3jnNdEMHCOH_XriaQkw6sh6HTD/pub?output=csv";
 
 // 🔥 ELEMENTOS
+
 const countryGrid =
 document.getElementById("countryGrid");
 
@@ -509,6 +533,7 @@ const pagination =
 document.getElementById("pagination");
 
 // 🔥 CONFIG
+
 const itemsPerPage = 12;
 
 let currentPage = 1;
@@ -516,6 +541,7 @@ let currentPage = 1;
 let radios = [];
 
 // 🔥 BANDERAS
+
 function banderaPais(pais){
 
     pais = (pais || "")
@@ -562,6 +588,7 @@ function banderaPais(pais){
 }
 
 // 🔥 LEER CSV
+
 Papa.parse(sheetURL,{
 
     download:true,
@@ -585,6 +612,7 @@ Papa.parse(sheetURL,{
 });
 
 // 🔥 CREAR FILTRO
+
 function crearFiltro(){
 
     const paises = [];
@@ -622,6 +650,7 @@ function crearFiltro(){
 }
 
 // 🔥 MOSTRAR PAISES
+
 function mostrarPaises(){
 
     countryGrid.innerHTML = "";
@@ -721,6 +750,7 @@ function mostrarPaises(){
 }
 
 // 🔥 PAGINACION
+
 function crearPaginacion(totalPages){
 
     pagination.innerHTML = "";
@@ -766,6 +796,7 @@ function crearPaginacion(totalPages){
 }
 
 // 🔥 MOSTRAR EMISORAS
+
 function mostrarRadiosPais(pais){
 
     countriesSection.classList.add(
@@ -849,6 +880,7 @@ function mostrarRadiosPais(pais){
 }
 
 // 🔥 VOLVER
+
 function volverPaises(){
 
     radiosSection.classList.add(
@@ -862,6 +894,7 @@ function volverPaises(){
 }
 
 // 🔥 EVENTO FILTRO
+
 countryFilter.addEventListener(
     "change",
     ()=>{
