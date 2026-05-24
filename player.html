@@ -213,10 +213,21 @@ decodeURIComponent(
 params.get("logo") || ""
 );
 
-const stream =
+let stream =
 decodeURIComponent(
 params.get("stream") || ""
 );
+
+// 🔥 CONVERTIR HTTP
+if(
+    stream.startsWith("http://")
+){
+
+    stream =
+    "https://corsproxy.io/?" +
+    stream;
+
+}
 
 const pais =
 decodeURIComponent(
