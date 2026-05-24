@@ -50,6 +50,87 @@ body{
 
 }
 
+/* 🔥 TOPBAR */
+
+.topbar{
+
+    position:sticky;
+
+    top:0;
+
+    z-index:999;
+
+    width:100%;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:12px 16px;
+
+    margin-bottom:20px;
+
+    background:
+    rgba(0,0,0,.35);
+
+    backdrop-filter:
+    blur(12px);
+
+    -webkit-backdrop-filter:
+    blur(12px);
+
+    border-bottom:
+    1px solid
+    rgba(255,255,255,.10);
+
+}
+
+/* 🔥 LEFT */
+
+.topbar-left{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:12px;
+
+}
+
+/* 🔥 LOGO */
+
+.app-logo{
+
+    width:42px;
+
+    height:42px;
+
+    border-radius:12px;
+
+    object-fit:cover;
+
+    box-shadow:
+    0 4px 10px
+    rgba(0,0,0,.25);
+
+}
+
+/* 🔥 NAME */
+
+.app-name{
+
+    font-size:20px;
+
+    font-weight:bold;
+
+    color:#fff;
+
+    letter-spacing:.3px;
+
+}
+
 /* 🔥 APP */
 .radio-app{
 
@@ -325,15 +406,29 @@ body{
 </head>
 <body>
 
+<!-- 🔥 HEADER APP -->
+<div class="topbar">
+
+    <div class="topbar-left">
+
+        <img
+        class="app-logo"
+        src="4008656_ico.png">
+
+        <div class="app-name">
+
+            Radios Multiples
+
+        </div>
+
+    </div>
+
+</div>
+
 <div class="radio-app">
 
     <!-- 🔥 PAISES -->
     <div id="countriesSection">
-
-        <div class="app-title">
-
-        
-        </div>
 
         <!-- 🔥 FILTRO -->
         <div class="filter-box">
