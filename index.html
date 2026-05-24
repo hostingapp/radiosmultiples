@@ -44,15 +44,13 @@ body{
 
 width:100%;
 min-height:100%;
-
 overflow-x:hidden;
 
 font-family:
 'Poppins',
 sans-serif;
 
-background:
-#020617;
+background:#020617;
 
 color:#fff;
 
@@ -63,27 +61,22 @@ color:#fff;
 .radio-app{
 
 width:100%;
-
 min-height:100vh;
-
-padding-bottom:40px;
+padding-bottom:30px;
 
 }
 
-/* 🔥 HEADER MÁS PEQUEÑO */
+/* 🔥 HEADER PEQUEÑO */
 
 .app-header{
 
 position:sticky;
-
 top:0;
-
 z-index:999;
 
 width:100%;
 
-padding:
-12px 14px 14px;
+padding:10px 14px;
 
 background:
 linear-gradient(
@@ -100,17 +93,14 @@ box-shadow:
 
 }
 
-/* 🔥 HEADER CONTENT */
+/* 🔥 HEADER */
 
 .header-content{
 
 display:flex;
-
 align-items:center;
-
 justify-content:center;
-
-gap:12px;
+gap:10px;
 
 }
 
@@ -118,11 +108,10 @@ gap:12px;
 
 .app-logo{
 
-width:58px;
+width:48px;
+height:48px;
 
-height:58px;
-
-border-radius:18px;
+border-radius:14px;
 
 object-fit:cover;
 
@@ -131,7 +120,7 @@ background:#fff;
 padding:3px;
 
 box-shadow:
-0 6px 16px rgba(0,0,0,.35);
+0 5px 12px rgba(0,0,0,.35);
 
 }
 
@@ -140,18 +129,15 @@ box-shadow:
 .app-info{
 
 display:flex;
-
 flex-direction:column;
-
-justify-content:center;
 
 }
 
-/* 🔥 NAME MÁS PEQUEÑO */
+/* 🔥 NOMBRE MÁS PEQUEÑO */
 
 .app-name{
 
-font-size:18px;
+font-size:15px;
 
 font-weight:800;
 
@@ -161,17 +147,15 @@ text-transform:uppercase;
 
 line-height:1.2;
 
-color:#fff;
-
 }
 
 /* 🔥 SUBTITLE */
 
 .app-subtitle{
 
-margin-top:3px;
+margin-top:2px;
 
-font-size:11px;
+font-size:10px;
 
 color:
 rgba(255,255,255,.70);
@@ -182,45 +166,15 @@ rgba(255,255,255,.70);
 
 .content{
 
-padding:18px;
+padding:14px;
 
 }
 
-/* 🔥 SEARCH */
-
-.search-box{
-
-margin-bottom:16px;
-
-}
-
-#searchInput{
-
-width:100%;
-
-padding:16px;
-
-border:none;
-
-outline:none;
-
-border-radius:18px;
-
-background:#111827;
-
-color:#fff;
-
-font-size:15px;
-
-font-weight:600;
-
-}
-
-/* 🔥 FILTER */
+/* 🔥 FILTRO */
 
 .filter-box{
 
-margin-bottom:18px;
+margin-bottom:16px;
 
 }
 
@@ -228,39 +182,26 @@ margin-bottom:18px;
 
 width:100%;
 
-padding:16px;
+padding:14px;
 
 border:none;
-
 outline:none;
 
-border-radius:18px;
+border-radius:16px;
 
 background:#111827;
 
 color:#fff;
 
-font-size:15px;
+font-size:14px;
 
 font-weight:600;
 
 }
 
-/* 🔥 GRID PAISES */
+/* 🔥 GRID */
 
-.country-grid{
-
-display:grid;
-
-grid-template-columns:
-repeat(3,1fr);
-
-gap:14px;
-
-}
-
-/* 🔥 GRID RADIOS */
-
+.country-grid,
 .radio-grid{
 
 display:grid;
@@ -268,11 +209,11 @@ display:grid;
 grid-template-columns:
 repeat(3,1fr);
 
-gap:14px;
+gap:12px;
 
 }
 
-/* 🔥 CARD */
+/* 🔥 CARDS */
 
 .country-card,
 .radio-card{
@@ -288,9 +229,9 @@ linear-gradient(
 #111827
 );
 
-border-radius:24px;
+border-radius:22px;
 
-padding:16px 10px;
+padding:14px 8px;
 
 text-align:center;
 
@@ -314,19 +255,18 @@ translateY(-4px);
 
 }
 
-/* 🔥 BANDERA */
+/* 🔥 BANDERAS */
 
 .country-flag img{
 
 width:62px;
-
 height:44px;
 
 object-fit:cover;
 
-border-radius:12px;
+border-radius:10px;
 
-margin-bottom:12px;
+margin-bottom:10px;
 
 background:#fff;
 
@@ -335,19 +275,18 @@ border:
 
 }
 
-/* 🔥 LOGO RADIO */
+/* 🔥 LOGOS */
 
 .radio-logo{
 
-width:82px;
-
-height:82px;
+width:74px;
+height:74px;
 
 object-fit:cover;
 
-border-radius:24px;
+border-radius:20px;
 
-margin-bottom:12px;
+margin-bottom:10px;
 
 border:
 2px solid rgba(255,255,255,.08);
@@ -357,12 +296,12 @@ box-shadow:
 
 }
 
-/* 🔥 TEXT */
+/* 🔥 TEXTOS */
 
 .country-name,
 .radio-name{
 
-font-size:12px;
+font-size:11px;
 
 font-weight:700;
 
@@ -374,23 +313,23 @@ word-break:break-word;
 
 .country-total{
 
-margin-top:6px;
+margin-top:5px;
 
-font-size:10px;
+font-size:9px;
 
 color:#94a3b8;
 
 }
 
-/* 🔥 TITLE */
+/* 🔥 TITULO */
 
 .app-title{
 
 text-align:center;
 
-margin-bottom:22px;
+margin-bottom:18px;
 
-font-size:24px;
+font-size:20px;
 
 font-weight:700;
 
@@ -403,14 +342,13 @@ font-weight:700;
 display:inline-flex;
 
 align-items:center;
-
 justify-content:center;
 
-padding:13px 18px;
+padding:12px 16px;
 
-margin-bottom:20px;
+margin-bottom:18px;
 
-border-radius:18px;
+border-radius:16px;
 
 background:#111827;
 
@@ -420,33 +358,28 @@ cursor:pointer;
 
 }
 
-/* 🔥 PAGINATION */
+/* 🔥 PAGINACION */
 
 .pagination{
 
-margin-top:30px;
+margin-top:24px;
 
 display:flex;
 
 justify-content:center;
 
-align-items:center;
-
 flex-wrap:wrap;
 
-gap:10px;
+gap:8px;
 
 }
 
-/* 🔥 PAGE BTN */
+/* 🔥 BOTON PAGINA */
 
 .page-btn{
 
-min-width:44px;
-
-height:44px;
-
-padding:0 14px;
+width:40px;
+height:40px;
 
 border:none;
 
@@ -456,24 +389,9 @@ background:#111827;
 
 color:#fff;
 
-font-size:14px;
-
 font-weight:700;
 
 cursor:pointer;
-
-transition:.25s;
-
-box-shadow:
-0 4px 12px rgba(0,0,0,.25);
-
-}
-
-.page-btn:hover{
-
-transform:translateY(-2px);
-
-background:#1e293b;
 
 }
 
@@ -503,33 +421,21 @@ display:none;
 grid-template-columns:
 repeat(3,1fr);
 
-gap:12px;
+gap:10px;
 
 }
-
-/* 🔥 LOGO MOBILE */
-
-.app-logo{
-
-width:52px;
-height:52px;
-
-}
-
-/* 🔥 TITULO MOBILE */
-
-.app-name{
-
-font-size:16px;
-
-}
-
-/* 🔥 RADIO LOGO */
 
 .radio-logo{
 
-width:72px;
-height:72px;
+width:66px;
+height:66px;
+
+}
+
+.country-flag img{
+
+width:56px;
+height:40px;
 
 }
 
@@ -563,7 +469,7 @@ RADIOS MULTIPLES
 
 <div class="app-subtitle">
 
-Escucha radios online en vivo
+Radios online en vivo
 
 </div>
 
@@ -577,18 +483,7 @@ Escucha radios online en vivo
 
 <div class="content">
 
-<!-- 🔥 SEARCH -->
-
-<div class="search-box">
-
-<input
-type="text"
-id="searchInput"
-placeholder="Buscar emisora...">
-
-</div>
-
-<!-- 🔥 FILTER -->
+<!-- 🔥 FILTRO -->
 
 <div class="filter-box">
 
@@ -657,7 +552,7 @@ id="radioGrid"></div>
 const sheetURL =
 "https://docs.google.com/spreadsheets/d/e/2PACX-1vT0xk01tNw0zCo0mgsq1PYv6Gk4ptl_kv11QfEF4s0aSZDD8wAxym3jnNdEMHCOH_XriaQkw6sh6HTD/pub?output=csv";
 
-// 🔥 ELEMENTS
+// 🔥 ELEMENTOS
 
 const countryGrid =
 document.getElementById("countryGrid");
@@ -680,9 +575,6 @@ document.getElementById("countryFilter");
 const pagination =
 document.getElementById("pagination");
 
-const searchInput =
-document.getElementById("searchInput");
-
 // 🔥 CONFIG
 
 const itemsPerPage = 9;
@@ -691,7 +583,7 @@ let currentPage = 1;
 
 let radios = [];
 
-// 🔥 FLAGS
+// 🔥 BANDERAS
 
 function banderaPais(pais){
 
@@ -744,7 +636,7 @@ return `https://flagcdn.com/w160/${code}.png`;
 
 }
 
-// 🔥 LOAD CSV
+// 🔥 CARGAR CSV
 
 Papa.parse(sheetURL,{
 
@@ -768,7 +660,7 @@ mostrarPaises();
 
 });
 
-// 🔥 FILTER
+// 🔥 FILTRO
 
 function crearFiltro(){
 
@@ -806,7 +698,7 @@ countryFilter.appendChild(option);
 
 }
 
-// 🔥 SHOW COUNTRIES
+// 🔥 MOSTRAR PAISES
 
 function mostrarPaises(){
 
@@ -906,15 +798,11 @@ crearPaginacion(totalPages);
 
 }
 
-// 🔥 PAGINATION
+// 🔥 PAGINACION
 
 function crearPaginacion(totalPages){
 
 pagination.innerHTML = "";
-
-if(totalPages <= 1){
-return;
-}
 
 for(let i=1;i<=totalPages;i++){
 
@@ -953,7 +841,7 @@ pagination.appendChild(btn);
 
 }
 
-// 🔥 SHOW RADIOS
+// 🔥 MOSTRAR RADIOS
 
 function mostrarRadiosPais(pais){
 
@@ -970,8 +858,8 @@ countryTitle.innerHTML = `
 <img
 src="${banderaPais(pais)}"
 style="
-width:42px;
-height:30px;
+width:38px;
+height:28px;
 border-radius:8px;
 vertical-align:middle;
 margin-right:10px;
@@ -983,16 +871,10 @@ ${pais}
 
 radioGrid.innerHTML = "";
 
-const texto =
-searchInput.value.toLowerCase();
-
 const filtradas =
 radios.filter(cols=>
 
-(cols[5] || "") === pais &&
-(cols[1] || "")
-.toLowerCase()
-.includes(texto)
+(cols[5] || "") === pais
 
 );
 
@@ -1060,7 +942,7 @@ radioGrid.appendChild(card);
 
 }
 
-// 🔥 BACK
+// 🔥 VOLVER
 
 function volverPaises(){
 
@@ -1074,7 +956,7 @@ countriesSection.classList.remove(
 
 }
 
-// 🔥 FILTER EVENT
+// 🔥 EVENTO FILTRO
 
 countryFilter.addEventListener(
 "change",
@@ -1083,28 +965,6 @@ countryFilter.addEventListener(
 currentPage = 1;
 
 mostrarPaises();
-
-}
-);
-
-// 🔥 SEARCH EVENT
-
-searchInput.addEventListener(
-"input",
-()=>{
-
-if(
-!radiosSection.classList.contains(
-"hidden"
-)
-){
-
-const titulo =
-countryTitle.innerText.trim();
-
-mostrarRadiosPais(titulo);
-
-}
 
 }
 );
