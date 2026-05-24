@@ -61,7 +61,7 @@ color:#fff;
 
 }
 
-/* 🔥 PLAYER */
+/* 🔥 PAGE */
 
 .player-page{
 
@@ -69,10 +69,15 @@ width:100%;
 min-height:100vh;
 
 display:flex;
-align-items:center;
+align-items:flex-start;
 justify-content:center;
 
-padding:20px;
+padding:
+max(15px, env(safe-area-inset-top))
+12px
+max(20px, env(safe-area-inset-bottom));
+
+overflow-x:hidden;
 
 }
 
@@ -83,7 +88,9 @@ padding:20px;
 position:relative;
 
 width:100%;
-max-width:430px;
+max-width:100%;
+
+margin:auto;
 
 background:
 linear-gradient(
@@ -92,9 +99,9 @@ linear-gradient(
 #111827
 );
 
-border-radius:34px;
+border-radius:28px;
 
-padding:30px 24px;
+padding:30px 22px;
 
 text-align:center;
 
@@ -129,13 +136,13 @@ right:-80px;
 
 }
 
-/* 🔥 BACK */
+/* 🔥 TOP */
 
 .top-bar{
 
 display:flex;
 align-items:center;
-justify-content:space-between;
+justify-content:flex-start;
 
 margin-bottom:20px;
 
@@ -144,10 +151,12 @@ z-index:2;
 
 }
 
+/* 🔥 BACK */
+
 .back-btn{
 
-width:46px;
-height:46px;
+width:48px;
+height:48px;
 
 border-radius:16px;
 
@@ -158,13 +167,18 @@ justify-content:center;
 background:
 rgba(255,255,255,.06);
 
-font-size:20px;
+font-size:22px;
 
 cursor:pointer;
 
 text-decoration:none;
 
 color:#fff;
+
+backdrop-filter:blur(10px);
+
+border:
+1px solid rgba(255,255,255,.05);
 
 }
 
@@ -179,8 +193,14 @@ z-index:2;
 
 .logo{
 
-width:210px;
-height:210px;
+width:55vw;
+height:55vw;
+
+max-width:210px;
+max-height:210px;
+
+min-width:150px;
+min-height:150px;
 
 object-fit:cover;
 
@@ -226,6 +246,8 @@ letter-spacing:1px;
 
 }
 
+/* 🔥 DOT */
+
 .live-dot{
 
 width:10px;
@@ -258,7 +280,7 @@ opacity:1;
 
 }
 
-/* 🔥 INFO */
+/* 🔥 NAME */
 
 .radio-name{
 
@@ -272,7 +294,11 @@ line-height:1.2;
 position:relative;
 z-index:2;
 
+word-break:break-word;
+
 }
+
+/* 🔥 COUNTRY */
 
 .radio-country{
 
@@ -330,6 +356,20 @@ color:#cbd5e1;
 
 }
 
+/* 🔥 LOADER */
+
+.loader{
+
+margin-top:15px;
+
+font-size:13px;
+
+color:#38bdf8;
+
+display:none;
+
+}
+
 /* 🔥 BUTTONS */
 
 .action-buttons{
@@ -343,6 +383,8 @@ margin-top:22px;
 flex-wrap:wrap;
 
 }
+
+/* 🔥 BUTTON */
 
 .action-btn{
 
@@ -373,42 +415,84 @@ transform:translateY(-2px);
 
 }
 
-/* 🔥 LOADER */
+/* 🔥 MOBILE */
 
-.loader{
+@media(max-width:768px){
 
-margin-top:15px;
+.player-page{
 
-font-size:13px;
-
-color:#38bdf8;
-
-display:none;
+padding-top:15px;
 
 }
 
-/* 🔥 MOBILE */
-
-@media(max-width:480px){
-
 .player-card{
 
-padding:24px 18px;
+padding:22px 16px;
 
-border-radius:28px;
+border-radius:24px;
 
 }
 
 .logo{
 
-width:180px;
-height:180px;
+width:58vw;
+height:58vw;
+
+max-width:190px;
+max-height:190px;
 
 }
 
 .radio-name{
 
-font-size:24px;
+font-size:22px;
+
+line-height:1.3;
+
+}
+
+.player-box{
+
+padding:18px;
+
+}
+
+.action-buttons{
+
+gap:10px;
+
+}
+
+.action-btn{
+
+flex:1;
+
+font-size:13px;
+
+padding:13px 10px;
+
+}
+
+audio{
+
+height:50px;
+
+}
+
+}
+
+@media(max-width:380px){
+
+.logo{
+
+width:62vw;
+height:62vw;
+
+}
+
+.radio-name{
+
+font-size:20px;
 
 }
 
@@ -429,8 +513,8 @@ font-size:24px;
 <div class="top-bar">
 
 <a
-href="index.html"
-class="back-btn">
+class="back-btn"
+onclick="volverAtras()">
 
 ←
 
@@ -511,7 +595,7 @@ Cargando audio...
 class="action-btn"
 onclick="togglePlay()">
 
-▶ PLAY / PAUSE
+▶ PLAY
 
 </button>
 
@@ -587,11 +671,11 @@ document
 logoImg.src =
 logo || "https://via.placeholder.com/300";
 
-/* 🔥 STREAM FIX */
+/* 🔥 FIX STREAM */
 
 stream = stream.trim();
 
-/* 🔥 HTTPS FIX */
+/* 🔥 ALERTA HTTP */
 
 if(
 location.protocol === "https:" &&
@@ -599,11 +683,11 @@ stream.startsWith("http://")
 ){
 
 statusText.innerHTML =
-"⚠ El stream usa HTTP y puede bloquearse en algunas apps.";
+"⚠ Stream HTTP puede bloquearse.";
 
 }
 
-/* 🔥 LOAD STREAM */
+/* 🔥 LOAD */
 
 function loadStream(){
 
@@ -632,7 +716,7 @@ loader.style.display =
 .catch(()=>{
 
 statusText.innerHTML =
-"❌ No se pudo reproducir el stream";
+"❌ No se pudo reproducir";
 
 loader.style.display =
 "none";
@@ -643,7 +727,7 @@ loader.style.display =
 
 }
 
-/* 🔥 PLAY / PAUSE */
+/* 🔥 PLAY */
 
 function togglePlay(){
 
@@ -664,9 +748,26 @@ audio.pause();
 function reloadStream(){
 
 statusText.innerHTML =
-"🔄 Reconectando stream...";
+"🔄 Reconectando...";
 
 loadStream();
+
+}
+
+/* 🔥 VOLVER */
+
+function volverAtras(){
+
+if(document.referrer){
+
+history.back();
+
+}else{
+
+window.location.href =
+"index.html";
+
+}
 
 }
 
@@ -721,9 +822,16 @@ audio.play()
 }
 );
 
-/* 🔥 START */
+/* 🔥 AUTO START */
+
+window.addEventListener(
+"load",
+()=>{
 
 loadStream();
+
+}
+);
 
 </script>
 
