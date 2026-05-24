@@ -171,19 +171,30 @@ class="name"></div>
 id="country"
 class="country"></div>
 
+<!-- 🔥 AUDIO -->
 <audio
 id="audio"
 controls
 autoplay
-playsinline>
+playsinline
+style="width:100%;">
 
 <source
 id="source"
 type="audio/mpeg">
 
-Tu navegador no soporta audio.
-
 </audio>
+
+<!-- 🔥 FALLBACK -->
+<iframe
+id="radioFrame"
+style="
+display:none;
+width:0;
+height:0;
+border:none;
+">
+</iframe>
 <br>
 
 <a
@@ -196,8 +207,9 @@ class="back-btn">
 
 </div>
 
-<script>
+<sc<script>
 
+// 🔥 PARAMS
 const params =
 new URLSearchParams(
 window.location.search
@@ -218,22 +230,25 @@ decodeURIComponent(
 params.get("stream") || ""
 );
 
-// 🔥 CONVERTIR HTTP
-if(
-    stream.startsWith("http://")
-){
-
-    stream =
-    "https://corsproxy.io/?" +
-    stream;
-
-}
-
 const pais =
 decodeURIComponent(
 params.get("pais") || ""
 );
 
+// 🔥 ELEMENTOS
+const audio =
+document.getElementById("audio");
+
+const source =
+document.getElementById("source");
+
+const frame =
+document.getElementById("radioFrame");
+
+const status =
+document.getElementById("status");
+
+// 🔥 INFO
 document
 .getElementById("name")
 .innerText = nombre;
@@ -246,42 +261,116 @@ document
 .getElementById("country")
 .innerText = pais;
 
-const audio =
-document.getElementById("audio");
+// 🔥 SI ES HTTP
+if(
+stream.startsWith("http://")
+){
 
-const source =
-document.getElementById("source");
+stream =
+"https://corsproxy.io/?" +
+stream;
 
-source.setAttribute(
-"src",
-stream
-);
+}
+
+// 🔥 STREAM
+source.src = stream;
 
 audio.load();
 
-audio.play().catch(error=>{
+// 🔥 PLAY
+audio.play()
 
-    console.log(
-    "Error audio:",
-    error
-    );
+.then(()=>{
 
-    alert(
-    "La emisora no pudo reproducirse."
-    );
+status.innerText =
+"🟢 Reproduciendo";
+
+})
+
+.catch(()=>{
+
+fallbackPlayer();
 
 });
-    
+
+// 🔥 ERROR
 audio.addEventListener(
 "error",
 ()=>{
 
-    alert(
-    "Stream incompatible o caído."
-    );
+fallbackPlayer();
 
 });
-    
+
+// 🔥 FALLBACK
+function fallbackPlayer(){
+
+status.innerText =
+"⚠️ Intentando modo alternativo...";
+
+// 🔥 ESCONDER AUDIO
+audio.style.display =
+"none";
+
+// 🔥 MOSTRAR IFRAME
+frame.style.display =
+"block";
+
+// 🔥 ABRIR STREAM
+frame.src = stream;
+
+status.innerText =
+"🟢 Reproduciendo externo";
+
+}
+
+// 🔥 BUFFER
+audio.addEventListener(
+"waiting",
+()=>{
+
+status.innerText =
+"⏳ Cargando stream...";
+
+});
+
+// 🔥 PLAYING
+audio.addEventListener(
+"playing",
+()=>{
+
+status.innerText =
+"🟢 Reproduciendo";
+
+});
+
+// 🔥 PAUSE
+audio.addEventListener(
+"pause",
+()=>{
+
+status.innerText =
+"⏸️ Pausado";
+
+});
+
+// 🔥 SEGUNDO PLANO
+document.addEventListener(
+"visibilitychange",
+()=>{
+
+if(
+!document.hidden &&
+audio.paused
+){
+
+audio.play()
+.catch(()=>{});
+
+}
+
+});
+
 </script>
 
 </body>
