@@ -1,772 +1,874 @@
+```html
 <!DOCTYPE html>
 <html lang="es">
 <head>
 
-    <meta charset="UTF-8">
+<meta charset="UTF-8">
 
-    <meta
-            name="viewport"
-            content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta
+name="viewport"
+content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-    <meta
-            name="theme-color"
-            content="#0f172a">
+<meta
+name="theme-color"
+content="#0f172a">
 
-    <link
-            rel="preconnect"
-            href="https://fonts.googleapis.com">
+<link
+rel="preconnect"
+href="https://fonts.googleapis.com">
 
-    <link
-            rel="preconnect"
-            href="https://fonts.gstatic.com"
-            crossorigin>
+<link
+rel="preconnect"
+href="https://fonts.gstatic.com"
+crossorigin>
 
-    <link
-            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
-            rel="stylesheet">
+<link
+href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap"
+rel="stylesheet">
 
-    <link
-            rel="stylesheet"
-            href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-    <title>Reproductor</title>
+<title>Reproductor</title>
 
-    <style>
+<style>
 
-        *{
-        margin:0;
-        padding:0;
-        box-sizing:border-box;
-        }
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
 
-        html,body{
-        width:100%;
-        height:100%;
-        font-family:'Poppins',sans-serif;
-        background:#020617;
-        overflow:hidden;
-        color:#fff;
-        }
+html,body{
+width:100%;
+height:100%;
+font-family:'Poppins',sans-serif;
+background:#020617;
+overflow:hidden;
+color:#fff;
+}
 
-        body{
-        display:flex;
-        align-items:center;
-        justify-content:center;
-        padding:20px;
+body{
+display:flex;
+align-items:center;
+justify-content:center;
+padding:20px;
 
-        /* 🔥 MISMO FONDO DEL INDEX */
-        background-image:
-        linear-gradient(
-        rgba(2,6,23,.88),
-        rgba(2,6,23,.94)
-        ),
-        url("https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=1200&auto=format&fit=crop");
+background-image:
+linear-gradient(
+rgba(2,6,23,.88),
+rgba(2,6,23,.94)
+),
+url("https://images.unsplash.com/photo-1590602847861-f357a9332bbc?q=80&w=1200&auto=format&fit=crop");
 
-        background-size:cover;
-        background-position:center;
-        }
+background-size:cover;
+background-position:center;
+}
 
-        /* =========================
-        TOP BUTTONS
-        ========================= */
+.player-card{
 
-        .player-top{
-        display:flex;
-        align-items:center;
-        justify-content:space-between;
-        margin-bottom:16px;
-        }
+width:100%;
+max-width:340px;
 
-        .top-btn{
+background:rgba(15,23,42,.90);
 
-        width:38px;
-        height:38px;
+backdrop-filter:blur(18px);
 
-        border-radius:12px;
+border-radius:28px;
 
-        background:rgba(255,255,255,.08);
+padding:22px 18px;
 
-        border:none;
+box-shadow:
+0 10px 40px rgba(0,0,0,.45);
 
-        color:#fff;
+border:1px solid rgba(255,255,255,.08);
 
-        font-size:14px;
+text-align:center;
+}
 
-        cursor:pointer;
+.player-top{
+display:flex;
+align-items:center;
+justify-content:space-between;
+margin-bottom:16px;
+}
 
-        display:flex;
-        align-items:center;
-        justify-content:center;
+.top-btn{
 
-        transition:.25s;
-        }
+width:38px;
+height:38px;
 
-        .top-btn:hover{
-        transform:scale(1.05);
-        background:rgba(255,255,255,.14);
-        }
+border-radius:12px;
 
-        /* =========================
-        PLAYER CARD
-        ========================= */
+background:rgba(255,255,255,.08);
 
-        .player-card{
+border:none;
 
-        width:100%;
-        max-width:340px;
+color:#fff;
 
-        background:rgba(15,23,42,.90);
+font-size:14px;
 
-        backdrop-filter:blur(18px);
+cursor:pointer;
 
-        border-radius:28px;
+display:flex;
+align-items:center;
+justify-content:center;
 
-        padding:22px 18px;
+transition:.25s;
+}
 
-        box-shadow:
-        0 10px 40px rgba(0,0,0,.45);
+.top-btn:hover{
+transform:scale(1.05);
+background:rgba(255,255,255,.14);
+}
 
-        border:1px solid rgba(255,255,255,.08);
+.player-logo{
 
-        text-align:center;
-        }
+width:125px;
+height:125px;
 
-        /* =========================
-        LOGO
-        ========================= */
+object-fit:cover;
 
-        .player-logo{
+border-radius:24px;
 
-        width:125px;
-        height:125px;
+margin:auto;
 
-        object-fit:cover;
+display:block;
 
-        border-radius:24px;
+background:#fff;
 
-        margin:auto;
+padding:5px;
 
-        display:block;
+box-shadow:
+0 10px 30px rgba(37,99,235,.35);
+}
 
-        background:#fff;
+.player-name{
 
-        padding:5px;
+margin-top:18px;
 
-        box-shadow:
-        0 10px 30px rgba(37,99,235,.35);
-        }
+font-size:20px;
 
-        /* =========================
-        TEXTOS
-        ========================= */
+font-weight:800;
 
-        .player-name{
+line-height:1.3;
+}
 
-        margin-top:18px;
+.player-country{
 
-        font-size:20px;
+margin-top:6px;
 
-        font-weight:800;
+font-size:12px;
 
-        line-height:1.3;
-        }
+color:#94a3b8;
 
-        .player-country{
+font-weight:600;
+}
 
-        margin-top:6px;
+.player-status{
 
-        font-size:12px;
+margin-top:10px;
 
-        color:#94a3b8;
+font-size:12px;
 
-        font-weight:600;
-        }
+font-weight:700;
 
-        .player-status{
+color:#22c55e;
+}
 
-        margin-top:10px;
+.song-title{
 
-        font-size:12px;
+margin-top:10px;
 
-        font-weight:700;
+font-size:13px;
 
-        color:#22c55e;
-        }
+font-weight:600;
 
-        .song-title{
+color:#38bdf8;
 
-        margin-top:10px;
+text-align:center;
 
-        font-size:13px;
+line-height:1.4;
 
-        font-weight:600;
+min-height:34px;
 
-        color:#38bdf8;
+padding:0 8px;
+}
 
-        text-align:center;
+.visualizer{
 
-        line-height:1.4;
+margin-top:18px;
 
-        min-height:34px;
+height:50px;
 
-        padding:0 8px;
-        }
+display:flex;
 
-        /* =========================
-        VISUALIZER
-        ========================= */
+align-items:flex-end;
 
-        .visualizer{
+justify-content:center;
 
-        margin-top:18px;
+gap:4px;
+}
 
-        height:50px;
+.bar{
 
-        display:flex;
+width:5px;
 
-        align-items:flex-end;
+height:8px;
 
-        justify-content:center;
+border-radius:10px;
 
-        gap:4px;
-        }
+background:linear-gradient(
+180deg,
+#38bdf8,
+#2563eb
+);
 
-        .bar{
+transition:
+height .08s linear,
+opacity .08s linear;
 
-        width:5px;
+opacity:.9;
+}
 
-        height:8px;
+.player-controls{
 
-        border-radius:10px;
+margin-top:24px;
 
-        background:linear-gradient(
-        180deg,
-        #38bdf8,
-        #2563eb
-        );
+display:flex;
 
-        transition:
-        height .08s linear,
-        opacity .08s linear;
+align-items:center;
 
-        opacity:.9;
-        }
+justify-content:center;
 
-        /* =========================
-        CONTROLES
-        ========================= */
+gap:16px;
+}
 
-        .player-controls{
+.control-btn{
 
-        margin-top:24px;
+width:52px;
+height:52px;
 
-        display:flex;
+border:none;
 
-        align-items:center;
+border-radius:50%;
 
-        justify-content:center;
+background:rgba(255,255,255,.08);
 
-        gap:16px;
-        }
+color:#fff;
 
-        .control-btn{
+font-size:18px;
 
-        width:52px;
-        height:52px;
+cursor:pointer;
 
-        border:none;
+transition:.25s;
 
-        border-radius:50%;
+display:flex;
 
-        background:rgba(255,255,255,.08);
+align-items:center;
 
-        color:#fff;
+justify-content:center;
+}
 
-        font-size:18px;
+.control-btn:hover{
+transform:scale(1.05);
+}
 
-        cursor:pointer;
+.play-btn{
 
-        transition:.25s;
+width:64px;
+height:64px;
 
-        display:flex;
+background:#2563eb;
 
-        align-items:center;
+font-size:24px;
 
-        justify-content:center;
-        }
+box-shadow:
+0 8px 25px rgba(37,99,235,.45);
+}
 
-        .control-btn:hover{
-        transform:scale(1.05);
-        }
+.player-bottom{
 
-        .play-btn{
+margin-top:22px;
 
-        width:64px;
-        height:64px;
+background:rgba(255,255,255,.05);
 
-        background:#2563eb;
+padding:12px;
 
-        font-size:24px;
+border-radius:16px;
 
-        box-shadow:
-        0 8px 25px rgba(37,99,235,.45);
-        }
+font-size:11px;
 
-        /* =========================
-        BOTTOM
-        ========================= */
+line-height:1.6;
 
-        .player-bottom{
+color:#cbd5e1;
+}
 
-        margin-top:22px;
-
-        background:rgba(255,255,255,.05);
-
-        padding:12px;
-
-        border-radius:16px;
-
-        font-size:11px;
-
-        line-height:1.6;
-
-        color:#cbd5e1;
-        }
-
-    </style>
+</style>
 
 </head>
 <body>
 
 <div class="player-card">
 
-    <div class="player-top">
+<div class="player-top">
 
-        <button
-                class="top-btn"
-                onclick="history.back()">
+<button
+class="top-btn"
+onclick="volverInicio()">
 
-            <i class="fas fa-arrow-left"></i>
+<i class="fas fa-arrow-left"></i>
 
-        </button>
+</button>
 
-        <button
-                class="top-btn"
-                onclick="compartirRadio()">
+<button
+class="top-btn"
+onclick="compartirRadio()">
 
-            <i class="fas fa-share-alt"></i>
+<i class="fas fa-share-alt"></i>
 
-        </button>
+</button>
 
-    </div>
+</div>
 
-    <img
-            id="radioLogo"
-            class="player-logo"
-            src="https://via.placeholder.com/300">
+<img
+id="radioLogo"
+class="player-logo"
+src="4008656_ico.png">
 
-    <div
-            class="player-name"
-            id="radioName">
+<div
+class="player-name"
+id="radioName">
 
-        RADIOS MULTIPLES
+RADIOS MULTIPLES
 
-    </div>
+</div>
 
-    <div
-            class="player-country"
-            id="radioCountry">
+<div
+class="player-country"
+id="radioCountry">
 
-        Radio online
+Radio online
 
-    </div>
+</div>
 
-    <div
-            class="player-status"
-            id="playerStatus">
+<div
+class="player-status"
+id="playerStatus">
 
-        ● CONECTANDO...
+● CONECTANDO...
 
-    </div>
+</div>
 
-    <div
-            id="songTitle"
-            class="song-title">
+<div
+id="songTitle"
+class="song-title">
 
-        En vivo
+En vivo
 
-    </div>
+</div>
 
-    <div
-            class="visualizer"
-            id="visualizer">
+<div
+class="visualizer"
+id="visualizer">
 
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
-        <div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
+<div class="bar"></div>
 
-    </div>
+</div>
 
-    <div class="player-controls">
+<div class="player-controls">
 
-        <button class="control-btn">
-            <i class="fas fa-backward-step"></i>
-        </button>
+<button class="control-btn">
+<i class="fas fa-backward-step"></i>
+</button>
 
-        <button
-                class="control-btn play-btn"
-                onclick="toggleRadio()">
+<button
+class="control-btn play-btn"
+onclick="toggleRadio()">
 
-            <i
-                    id="playIcon"
-                    class="fas fa-pause"></i>
+<i
+id="playIcon"
+class="fas fa-pause"></i>
 
-        </button>
+</button>
 
-        <button class="control-btn">
-            <i class="fas fa-forward-step"></i>
-        </button>
+<button class="control-btn">
+<i class="fas fa-forward-step"></i>
+</button>
 
-    </div>
+</div>
 
-    <div class="player-bottom">
+<div class="player-bottom">
 
-        Escucha tu emisora favorita en vivo en Radios Multiples.
+Escucha tu emisora favorita en vivo en Radios Multiples.
 
-    </div>
+</div>
 
 </div>
 
 <audio
-        id="radioPlayer"
-        autoplay></audio>
+id="radioPlayer"
+preload="none"
+crossorigin="anonymous"
+playsinline
+webkit-playsinline>
+</audio>
 
 <script>
 
-    /* =========================
-    PARAMETROS
-    ========================= */
+/* =========================
+PARAMETROS
+========================= */
 
-    const params =
-    new URLSearchParams(window.location.search);
+const params =
+new URLSearchParams(window.location.search);
 
-    const nombre =
-    decodeURIComponent(
-    params.get("nombre") || "Radio Online"
-    );
+const nombre =
+decodeURIComponent(
+params.get("nombre") || "Radio Online"
+);
 
-    const logo =
-    decodeURIComponent(
-    params.get("logo") || ""
-    );
+const logo =
+decodeURIComponent(
+params.get("logo") || ""
+);
 
-    const stream =
-    decodeURIComponent(
-    params.get("stream") || ""
-    );
+const stream =
+decodeURIComponent(
+params.get("stream") || ""
+);
 
-    /* =========================
-    ELEMENTOS
-    ========================= */
+const pais =
+decodeURIComponent(
+params.get("pais") || "Radio Online"
+);
 
-    const audio =
-    document.getElementById("radioPlayer");
+/* =========================
+ELEMENTOS
+========================= */
 
-    const radioName =
-    document.getElementById("radioName");
+const audio =
+document.getElementById("radioPlayer");
 
-    const radioLogo =
-    document.getElementById("radioLogo");
+const radioName =
+document.getElementById("radioName");
 
-    const playIcon =
-    document.getElementById("playIcon");
+const radioLogo =
+document.getElementById("radioLogo");
 
-    const playerStatus =
-    document.getElementById("playerStatus");
+const playIcon =
+document.getElementById("playIcon");
 
-    const songTitle =
-    document.getElementById("songTitle");
+const playerStatus =
+document.getElementById("playerStatus");
 
-    /* =========================
-    INFO RADIO
-    ========================= */
+const songTitle =
+document.getElementById("songTitle");
 
-    radioName.innerText = nombre;
+/* =========================
+INFO RADIO
+========================= */
 
-    radioLogo.src =
-    logo || "https://via.placeholder.com/300";
+radioName.innerText = nombre;
 
-    document.title = nombre;
+radioLogo.src =
+logo || "4008656_ico.png";
 
-    /* =========================
-    ESTADO
-    ========================= */
+radioLogo.onerror = ()=>{
 
-    let isPlaying = false;
+radioLogo.src =
+"4008656_ico.png";
 
-    /* =========================
-    INICIAR RADIO
-    ========================= */
+};
 
-    function iniciarRadio(){
+document.title = nombre;
 
-    if(!stream){
+document.getElementById("radioCountry")
+.innerText = pais;
 
-    playerStatus.innerText =
-    "● ERROR";
+/* =========================
+ESTADO
+========================= */
 
-    songTitle.innerText =
-    "Stream no encontrado";
+let isPlaying = false;
 
-    return;
-    }
+/* =========================
+INICIAR RADIO
+========================= */
 
-    playerStatus.innerText =
-    "● CONECTANDO...";
+function iniciarRadio(){
 
-    /* =========================
-    ANDROID APP
-    ========================= */
+if(!stream){
 
-    if(window.Android){
+playerStatus.innerText =
+"● ERROR";
 
-    audio.pause();
+songTitle.innerText =
+"Stream no encontrado";
 
-    audio.removeAttribute("src");
-
-    Android.playRadio(stream);
-
-    isPlaying = true;
-
-    playIcon.classList.remove("fa-play");
-
-    playIcon.classList.add("fa-pause");
-
-    playerStatus.innerText =
-    "● REPRODUCIENDO";
-
-    return;
-    }
-
-    /* =========================
-    WEB NORMAL
-    ========================= */
-
-    audio.src = stream;
-
-    audio.load();
-
-    audio.play()
-    .then(()=>{
-
-    isPlaying = true;
-
-    playIcon.classList.remove("fa-play");
-
-    playIcon.classList.add("fa-pause");
-
-    playerStatus.innerText =
-    "● REPRODUCIENDO";
-
-    })
-    .catch((e)=>{
-
-    console.log(e);
-
-    playerStatus.innerText =
-    "● ERROR";
-
-    songTitle.innerText =
-    "Emisora no disponible";
-
-    });
-
-    }
-
-    /* =========================
-    PLAY / PAUSE
-    ========================= */
-
-    function toggleRadio(){
-
-    if(window.Android){
-
-    Android.toggleRadio();
-
-    if(isPlaying){
-
-    playIcon.classList.remove("fa-pause");
-    playIcon.classList.add("fa-play");
-
-    playerStatus.innerText =
-    "● PAUSADO";
-
-    }else{
-
-    playIcon.classList.remove("fa-play");
-    playIcon.classList.add("fa-pause");
-
-    playerStatus.innerText =
-    "● REPRODUCIENDO";
-    }
-
-    isPlaying = !isPlaying;
-
-    return;
-    }
-
-    /* WEB */
-
-    if(isPlaying){
-
-    audio.pause();
-
-    playIcon.classList.remove("fa-pause");
-    playIcon.classList.add("fa-play");
-
-    playerStatus.innerText =
-    "● PAUSADO";
-
-    }else{
-
-    audio.play();
-
-    playIcon.classList.remove("fa-play");
-    playIcon.classList.add("fa-pause");
-
-    playerStatus.innerText =
-    "● REPRODUCIENDO";
-    }
-
-    isPlaying = !isPlaying;
-    }
-
-    /* =========================
-    COMPARTIR
-    ========================= */
-
-    function compartirRadio(){
-
-    const linkPlayStore =
-    "https://play.google.com/store/apps/details?id=radios.multiples1&pcampaignid=web_share";
-
-    const texto =
-    "Escucha " + nombre +
-    " en Radios Multiples:\n" +
-    linkPlayStore;
-
-    /* ANDROID APP */
-    if(window.Android && Android.compartirRadio){
-
-        Android.compartirRadio(
-            texto,
-            linkPlayStore
-        );
-
-        return;
-    }
-
-    /* WEB NORMAL */
-    if(navigator.share){
-
-        navigator.share({
-
-            title:nombre,
-
-            text:texto,
-            url:linkPlayStore
-
-        });
-
-    }else{
-
-        alert(texto);
-
-    }
+return;
 }
 
-    /* =========================
-    VISUALIZER
-    ========================= */
+playerStatus.innerText =
+"● CONECTANDO...";
 
-    const bars =
-    document.querySelectorAll(".bar");
+/* =========================
+ANDROID APP
+========================= */
 
-    function moverBarras(){
+if(window.Android){
 
-    bars.forEach(bar=>{
+audio.pause();
 
-    const random =
-    Math.floor(Math.random()*60)+10;
+audio.removeAttribute("src");
 
-    bar.style.height =
-    random + "px";
+Android.playRadio(stream);
 
-    });
+isPlaying = true;
 
-    }
+playIcon.classList.remove("fa-play");
 
-    setInterval(()=>{
+playIcon.classList.add("fa-pause");
 
-    if(isPlaying){
+playerStatus.innerText =
+"● REPRODUCIENDO";
 
-    moverBarras();
+return;
+}
 
-    }
+/* =========================
+WEB NORMAL
+========================= */
 
-    },120);
+let finalStream =
+stream.trim();
 
-    /* =========================
-    EVENTOS AUDIO
-    ========================= */
+/* HTTP → HTTPS */
+if(
+location.protocol==="https:" &&
+finalStream.startsWith("http://")
+){
 
-    audio.addEventListener("waiting",()=>{
+finalStream =
+finalStream.replace(
+"http://",
+"https://"
+);
 
-    playerStatus.innerText =
-    "● CARGANDO...";
+}
 
-    });
+/* EVITAR CACHE */
+finalStream +=
+(finalStream.includes("?") ? "&" : "?")
++
+"nocache=" +
+Date.now();
 
-    audio.addEventListener("playing",()=>{
+audio.src = finalStream;
 
-    playerStatus.innerText =
-    "● REPRODUCIENDO";
+audio.load();
 
-    });
+audio.play()
+.then(()=>{
 
-    audio.addEventListener("pause",()=>{
+console.log("Audio iniciado");
 
-    playerStatus.innerText =
-    "● PAUSADO";
+isPlaying = true;
 
-    });
+playIcon.classList.remove("fa-play");
 
-    audio.addEventListener("error",()=>{
+playIcon.classList.add("fa-pause");
 
-    playerStatus.innerText =
-    "● ERROR";
+playerStatus.innerText =
+"● REPRODUCIENDO";
 
-    songTitle.innerText =
-    "Emisora no disponible";
+})
+.catch((e)=>{
 
-    });
+console.log(e);
 
-    /* =========================
-    INICIAR
-    ========================= */
+playerStatus.innerText =
+"● TOCA PLAY";
 
-    iniciarRadio();
+songTitle.innerText =
+"Toca el botón PLAY";
+
+});
+
+}
+
+/* =========================
+PLAY / PAUSE
+========================= */
+
+function toggleRadio(){
+
+if(window.Android){
+
+Android.toggleRadio();
+
+if(isPlaying){
+
+playIcon.classList.remove("fa-pause");
+playIcon.classList.add("fa-play");
+
+playerStatus.innerText =
+"● PAUSADO";
+
+}else{
+
+playIcon.classList.remove("fa-play");
+playIcon.classList.add("fa-pause");
+
+playerStatus.innerText =
+"● REPRODUCIENDO";
+}
+
+isPlaying = !isPlaying;
+
+return;
+}
+
+/* WEB */
+
+if(isPlaying){
+
+audio.pause();
+
+playIcon.classList.remove("fa-pause");
+playIcon.classList.add("fa-play");
+
+playerStatus.innerText =
+"● PAUSADO";
+
+}else{
+
+audio.play();
+
+playIcon.classList.remove("fa-play");
+playIcon.classList.add("fa-pause");
+
+playerStatus.innerText =
+"● REPRODUCIENDO";
+}
+
+isPlaying = !isPlaying;
+}
+
+/* =========================
+COMPARTIR
+========================= */
+
+function compartirRadio(){
+
+const linkPlayStore =
+"https://play.google.com/store/apps/details?id=radios.multiples1&pcampaignid=web_share";
+
+const texto =
+"Escucha " + nombre +
+" en Radios Multiples:\n" +
+linkPlayStore;
+
+if(window.Android && Android.compartirRadio){
+
+Android.compartirRadio(
+texto,
+linkPlayStore
+);
+
+return;
+}
+
+if(navigator.share){
+
+navigator.share({
+
+title:nombre,
+
+text:texto,
+
+url:linkPlayStore
+
+});
+
+}else{
+
+alert(texto);
+
+}
+
+}
+
+/* =========================
+VOLVER
+========================= */
+
+function volverInicio(){
+
+if(document.referrer){
+
+history.back();
+
+}else{
+
+window.location.href =
+"index.html";
+
+}
+
+}
+
+/* =========================
+VISUALIZER
+========================= */
+
+const bars =
+document.querySelectorAll(".bar");
+
+function moverBarras(){
+
+bars.forEach(bar=>{
+
+const random =
+Math.floor(Math.random()*60)+10;
+
+bar.style.height =
+random + "px";
+
+});
+
+}
+
+setInterval(()=>{
+
+if(isPlaying){
+
+moverBarras();
+
+}
+
+},120);
+
+/* =========================
+EVENTOS AUDIO
+========================= */
+
+audio.addEventListener("waiting",()=>{
+
+playerStatus.innerText =
+"● CARGANDO...";
+
+});
+
+audio.addEventListener("playing",()=>{
+
+playerStatus.innerText =
+"● REPRODUCIENDO";
+
+});
+
+audio.addEventListener("pause",()=>{
+
+playerStatus.innerText =
+"● PAUSADO";
+
+});
+
+audio.addEventListener("error",()=>{
+
+playerStatus.innerText =
+"● RECONECTANDO...";
+
+songTitle.innerText =
+"Reconectando señal...";
+
+setTimeout(()=>{
+
+audio.load();
+
+audio.play()
+.catch(()=>{
+
+playerStatus.innerText =
+"● ERROR";
+
+songTitle.innerText =
+"Emisora no disponible";
+
+});
+
+},3000);
+
+});
+
+/* =================================
+MANTENER AUDIO EN SEGUNDO PLANO
+================================= */
+
+document.addEventListener(
+"visibilitychange",
+()=>{
+
+if(document.hidden){
+
+console.log(
+"APP EN SEGUNDO PLANO"
+);
+
+}else{
+
+console.log(
+"APP ACTIVA"
+);
+
+if(isPlaying){
+
+audio.play()
+.catch(()=>{});
+
+}
+
+}
+
+});
+
+/* =================================
+RECUPERAR AUDIO
+================================= */
+
+window.addEventListener(
+"focus",
+()=>{
+
+if(isPlaying){
+
+audio.play()
+.catch(()=>{});
+
+}
+
+});
+
+/* =========================
+INICIAR
+========================= */
+
+iniciarRadio();
 
 </script>
 
 </body>
 </html>
+```
